@@ -1,1 +1,1 @@
-# table-booking-app
+# alelo-app-clone
