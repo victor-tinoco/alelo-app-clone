@@ -1,0 +1,41 @@
+name: alelo_app_clone
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.3
+  flutter_svg:
+  carousel_slider:
+  mobx: ^1.2.1+3
+  flutter_mobx:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mobx_codegen:
+  build_runner:
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Museosans
+      fonts:
+        - asset: assets/fonts/museo_sans_300.ttf
+        - asset: assets/fonts/museo_sans_500.ttf
+          weight: 500
+        - asset: assets/fonts/museo_sans_100.ttf
+          weight: 100
+        - asset: assets/fonts/museo_sans_700.ttf
+          weight: 700
