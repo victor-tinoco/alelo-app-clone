@@ -15,7 +15,7 @@ class VoucherCardComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 190,
-      width: double.infinity,
+      width: MediaQuery.of(context).size.width / 1.27,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -36,7 +36,7 @@ class VoucherCardComponent extends StatelessWidget {
         ),
         SizedBox(height: 10),
         Text(
-          '•••• •••• •••• 4466',
+          voucherCard.cardnumberHidden,
           style: Theme.of(context).textTheme.bodyText2.copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w300,
@@ -45,7 +45,7 @@ class VoucherCardComponent extends StatelessWidget {
         ),
         SizedBox(height: 10),
         Text(
-          'R\$ 450,00',
+          voucherCard.availableCreditFormatted,
           style: Theme.of(context).textTheme.headline4.copyWith(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class VoucherCardComponent extends StatelessWidget {
         ),
         SizedBox(height: 5),
         Text(
-          'gaste até R\$ 20,00 hoje',
+          'gaste até ${voucherCard.dailySpendByTheEndOfMonthFormatted} hoje',
           style: Theme.of(context).textTheme.bodyText2.copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w300,
