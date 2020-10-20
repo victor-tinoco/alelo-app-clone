@@ -1,12 +1,13 @@
-import 'package:alelo_app_clone/%20constants.dart';
-import 'package:alelo_app_clone/pages/home_page.dart';
+import 'package:alelo_app_clone/constants.dart';
+import 'package:alelo_app_clone/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(AleloApp());
+  runApp(AleloCloneApp());
 }
 
-class AleloApp extends StatelessWidget {
+class AleloCloneApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

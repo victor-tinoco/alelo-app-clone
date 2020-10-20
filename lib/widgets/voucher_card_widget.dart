@@ -1,14 +1,14 @@
-import 'package:alelo_app_clone/%20constants.dart';
+import 'package:alelo_app_clone/constants.dart';
+import 'package:alelo_app_clone/models/voucher_card_model.dart';
 import 'package:flutter/material.dart';
-import 'package:alelo_app_clone/models/card.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class VoucherCardComponent extends StatelessWidget {
-  final VoucherCard voucherCard;
+class VoucherCardWidget extends StatelessWidget {
+  final VoucherCardModel card;
 
-  const VoucherCardComponent({
+  const VoucherCardWidget({
     Key key,
-    this.voucherCard,
+    this.card,
   }) : super(key: key);
 
   @override
@@ -19,33 +19,28 @@ class VoucherCardComponent extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        gradient: _getColorByVoucherType(),
+        gradient: _getGradientByVoucherType(),
       ),
       child: Column(children: [
-        SvgPicture.asset(
-          'assets/images/logo.svg',
-          width: 40,
+        SvgPicture.asset('assets/images/logo.svg', width: 40),
+        SizedBox(height: 10),
+        Text(
+          card.voucherType.description,
+          style: Theme.of(context).textTheme.bodyText2.copyWith(
+              fontWeight: FontWeight.w600, color: _getTextColorByVoucherType()),
         ),
         SizedBox(height: 10),
         Text(
-          voucherCard.voucherType.description,
+          card.cardnumberHidden,
           style: Theme.of(context).textTheme.bodyText2.copyWith(
-                fontWeight: FontWeight.w600,
-                color: _getTextColorByVoucherType(),
-              ),
-        ),
-        SizedBox(height: 10),
-        Text(
-          voucherCard.cardnumberHidden,
-          style: Theme.of(context).textTheme.bodyText2.copyWith(
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: FontWeight.w300,
                 color: _getTextColorByVoucherType(),
               ),
         ),
         SizedBox(height: 10),
         Text(
-          voucherCard.availableCreditFormatted,
+          card.availableCreditFormatted,
           style: Theme.of(context).textTheme.headline4.copyWith(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -54,7 +49,7 @@ class VoucherCardComponent extends StatelessWidget {
         ),
         SizedBox(height: 5),
         Text(
-          'gaste até ${voucherCard.dailySpendByTheEndOfMonthFormatted} hoje',
+          'gaste até ${card.dailySpendTheEndOfMonthFormatted} hoje',
           style: Theme.of(context).textTheme.bodyText2.copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w300,
@@ -65,8 +60,8 @@ class VoucherCardComponent extends StatelessWidget {
     );
   }
 
-  Gradient _getColorByVoucherType() {
-    switch (voucherCard?.voucherType) {
+  Gradient _getGradientByVoucherType() {
+    switch (card?.voucherType) {
       case VoucherType.FOOD:
         return Constants.darkGreenGradient;
       case VoucherType.MEAL:
@@ -79,7 +74,7 @@ class VoucherCardComponent extends StatelessWidget {
   }
 
   Color _getTextColorByVoucherType() {
-    switch (voucherCard?.voucherType) {
+    switch (card?.voucherType) {
       case VoucherType.FOOD:
         return Colors.white;
       case VoucherType.MEAL:

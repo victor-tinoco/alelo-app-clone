@@ -18,25 +18,25 @@ extension VoucherTypeExtension on VoucherType {
   }
 }
 
-class VoucherCard {
+class VoucherCardModel {
   int cardnumber;
-  VoucherType voucherType;
   double availableCredit;
+  VoucherType voucherType;
 
-  VoucherCard({this.cardnumber, this.voucherType, this.availableCredit});
-
-  String get dailySpendByTheEndOfMonthFormatted {
-    final now = DateTime.now();
-    int lastdayOfMonth = DateTime(now.year, now.month + 1, 0).day;
-    final diff = lastdayOfMonth - now.day;
-    return _formatToBrl(this.availableCredit / diff);
-  }
+  VoucherCardModel({this.availableCredit, this.cardnumber, this.voucherType});
 
   String get availableCreditFormatted => _formatToBrl(this.availableCredit);
 
   String get cardnumberHidden {
     final number = this.cardnumber.toString();
     return '•••• •••• •••• ${number.substring(number.length - 4)}';
+  }
+
+  String get dailySpendTheEndOfMonthFormatted {
+    final now = DateTime.now();
+    int lastDayOfMonth = DateTime(now.year, now.month + 1, 0).day;
+    final diff = lastDayOfMonth - now.day;
+    return _formatToBrl(this.availableCredit / diff);
   }
 
   String _formatToBrl(double amount) {
